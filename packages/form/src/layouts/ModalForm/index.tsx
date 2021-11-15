@@ -32,6 +32,9 @@ export type ModalFormProps<T = Record<string, any>> = Omit<FormProps<T>, 'onFini
     /** @name 受控的打开关闭 */
     visible?: ModalProps['visible'];
 
+    /** @name 回车是否提交表单 */
+    isKeyPressSubmit?: boolean;
+
     /** @name 打开关闭的事件 */
     onVisibleChange?: (visible: boolean) => void;
 
@@ -184,7 +187,7 @@ function ModalForm<T = Record<string, any>>({
         key={key}
         formComponentType="ModalForm"
         layout="vertical"
-        {...omit(rest, ['visible'])}
+        {...omit(rest, ['visible', 'isKeyPressSubmit'])}
         formRef={formRef}
         onFinish={async (values) => {
           if (!onFinish) {
